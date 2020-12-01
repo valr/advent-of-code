@@ -1,11 +1,8 @@
 #!/usr/bin/env python3
 
-numbers = []
-with open('puzzle_1_2.txt') as file:
-    for line in file:
-        numbers.append(int(line))
+with open('puzzle_1_1.txt') as file:
+    numbers = [int(line) for line in file]
 
-# lazy solution
 for n1 in numbers:
     for n2 in numbers:
         if n1+n2 == 2020:
