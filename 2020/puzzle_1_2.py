@@ -15,6 +15,7 @@ def original_solution():
                     print(f'n1: {n1}, n2: {n2}, n3: {n3}, n1*n2*n3: {n1*n2*n3}')
 
 def reworked_solution(r):
+    # less ugly, still inneficient
     return prod([n for n in combinations(numbers, r) if sum(n) == 2020][0])
 
 print("original solution:")
