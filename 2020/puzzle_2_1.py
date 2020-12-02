@@ -8,6 +8,6 @@ with open('puzzle_2_1.txt') as file:
         min_, max_, char, password, _ = re.split(r' |-|: |\n', line)
         count = password.count(char)
         if count >= int(min_) and count <= int(max_):
-            valid = valid+1
+            valid += 1
 
 print(f'count of valid passwords: {valid}')
