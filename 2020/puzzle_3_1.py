@@ -4,6 +4,7 @@ map = []
 
 def build_map(filename, repetition):
     global map
+
     with open(filename) as file:
         map = [line.strip() * repetition for line in file]
 
