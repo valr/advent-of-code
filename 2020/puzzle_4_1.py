@@ -2,7 +2,7 @@
 
 def read_passports(filename):
     with open(filename) as file:
-        passports = file.read().replace('\n\n', '\t').replace('\n', ' ').split('\t')
+        passports = file.read().split('\n\n')
 
     return passports
 
@@ -20,7 +20,5 @@ def validate_passports(passports):
 
 
 if __name__ == '__main__':
-    passports = read_passports('puzzle_4_1.txt')
-    valid = validate_passports(passports)
-
+    valid = validate_passports(read_passports('puzzle_4_1.txt'))
     print(f'number of valid passwords: {valid}')
