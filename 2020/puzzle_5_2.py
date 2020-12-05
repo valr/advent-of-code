@@ -20,10 +20,9 @@ def binary_partitioning(s, lo, hi):
 
 
 def get_seat_id(input):
-    seats = [binary_partitioning(boarding_pass[:7], 0, 127) * 8 +
-             binary_partitioning(boarding_pass[7:], 0, 7)
-             for boarding_pass in input]
-    seats.sort()
+    seats = sorted([binary_partitioning(boarding_pass[:7], 0, 127) * 8 +
+                    binary_partitioning(boarding_pass[7:], 0, 7)
+                    for boarding_pass in input])
 
     return [j-1 for i, j in zip(seats, seats[1:]) if j-i > 1][0]
 
