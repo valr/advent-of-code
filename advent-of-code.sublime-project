@@ -1,11 +1,10 @@
 {
-	"folders":
-	[
+	"folders": [
 		{
 			"path": "."
 		}
 	],
-	"settings":
-	{
+	"settings": {
+		"lsp_format_on_save": true
 	}
 }
