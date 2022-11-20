@@ -1,4 +1,2 @@
-*.txt
-*.input
-*.sublime-workspace
-a.out
+__pycache__/
+.venv/
