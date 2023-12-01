@@ -3,7 +3,6 @@
 
 def is_letter_digit(s):
     digits = [
-        "zero",
         "one",
         "two",
         "three",
@@ -17,7 +16,7 @@ def is_letter_digit(s):
 
     for i in range(0, len(digits)):
         if s.startswith(digits[i]):
-            return i
+            return i + 1
 
 
 with open("puzzle_1.txt") as file:
