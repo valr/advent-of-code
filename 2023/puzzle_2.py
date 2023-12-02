@@ -11,10 +11,10 @@ for line in lines:
     game = re.split(":|;", line)
     game_id = int(game[0].split()[-1])
     power_sets = {}
-    for set in game[1:]:
+    for sets in game[1:]:
         colors = {
             key: int(value)
-            for value, key in (pair.split() for pair in set.strip().split(", "))
+            for value, key in (pair.split() for pair in sets.strip().split(", "))
         }
 
         # game not possible if the bag contained
