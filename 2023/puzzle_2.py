@@ -10,7 +10,7 @@ sum_game_id, sum_power_sets = 0, 0
 for line in lines:
     game = re.split(":|;", line)
     game_id = int(game[0].split()[-1])
-    power_sets = {}
+    color_sets = {}
     for set in game[1:]:
         colors = {
             key: int(value)
@@ -29,9 +29,9 @@ for line in lines:
         # fewest number of cubes of each color that could have been in the bag
         # to make the game possible
         for color in ["red", "green", "blue"]:
-            power_sets[color] = max(power_sets.get(color, 0), colors.get(color, 0))
+            color_sets[color] = max(color_sets.get(color, 0), colors.get(color, 0))
 
     sum_game_id += game_id
-    sum_power_sets += math.prod(power_sets.values())
+    sum_power_sets += math.prod(color_sets.values())
 print(f"sum_game_id: {sum_game_id}")
 print(f"sum_power_sets: {sum_power_sets}")
