@@ -8,8 +8,8 @@ with open("puzzle_3.txt") as file:
 
 engine = [[char for char in line] for line in lines]
 
-sum_adjacent = 0
-num_stars = []
+sum_adjacent_symbol = 0
+num_adjacent_stars = []
 for y in range(0, len(engine)):
     y1 = y - 1 if y > 0 else y
     y2 = y + 1 if y + 1 < len(engine) else y
@@ -20,31 +20,31 @@ for y in range(0, len(engine)):
 
         adjacent = False
         for y3 in range(y1, y2 + 1):
-            # number adjacent to a "*"
-            if "*" in engine[y3][x1 : x2 + 1]:
-                num_stars.append((y1, y2, x1, x2, n))
+            part = engine[y3][x1 : x2 + 1]
 
             # number adjacent to a symbol
-            if set(engine[y3][x1 : x2 + 1]) - set(
-                ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "."]
-            ):
+            if set(part) - set(["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "."]):
                 adjacent = True
 
-        if adjacent:
-            sum_adjacent += n
+            # number adjacent to a star
+            if "*" in part:
+                num_adjacent_stars.append((y1, y2, x1, x2, n))
 
-print(f"sum_adjacent: {sum_adjacent}")
+        if adjacent:
+            sum_adjacent_symbol += n
+
+print(f"sum_adjacent_symbol: {sum_adjacent_symbol}")
 
 sum_gear_ratio = 0
 for y in range(0, len(engine)):
     for x in range(0, len(engine[y])):
-        # "*" symbol...
+        # star symbol...
         if engine[y][x] == "*":
             gear = []
 
             # ...adjacent to...
-            for i in range(0, len(num_stars)):
-                y1, y2, x1, x2, n = num_stars[i]
+            for i in range(0, len(num_adjacent_stars)):
+                y1, y2, x1, x2, n = num_adjacent_stars[i]
                 if y >= y1 and y <= y2 and x >= x1 and x <= x2:
                     gear.append(n)
 
