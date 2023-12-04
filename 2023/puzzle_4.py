@@ -8,7 +8,7 @@ with open("puzzle_4.txt") as file:
 total_points = 0
 total_scratchcards = [1] * len(lines)
 for index, line in enumerate(lines):
-    card = re.split(":|\|", line)
+    card = re.split(r":|\|", line)
     win = set([n.group(0) for n in re.finditer(r"\d+", card[1])]) & set(
         [n.group(0) for n in re.finditer(r"\d+", card[2])]
     )
