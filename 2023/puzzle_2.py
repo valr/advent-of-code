@@ -8,7 +8,7 @@ with open("puzzle_2.txt") as file:
 
 sum_game_id, sum_power_sets = 0, 0
 for line in lines:
-    game = re.split(":|;", line)
+    game = re.split(r":|;", line)
     game_id = int(game[0].split()[-1])
     color_sets = {}
     for set in game[1:]:
