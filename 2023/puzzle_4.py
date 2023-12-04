@@ -15,9 +15,9 @@ for index, line in enumerate(lines):
     if win:
         total_points += 2 ** (len(win) - 1)
 
-        for i in range(0, total_scratchcards[index]):
-            for j in range(index + 1, index + len(win) + 1):
-                total_scratchcards[j] += 1
+        for i in range(total_scratchcards[index]):
+            for j in range(len(win)):
+                total_scratchcards[index + j + 1] += 1
 
 print(f"total_points: {total_points}")
 print(f"total_scratchcards: {sum(total_scratchcards)}")
