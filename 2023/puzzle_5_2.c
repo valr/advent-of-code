@@ -4,7 +4,7 @@
  * Because I'm lazy and not motivated to rewrite the logic to get the part 2 done in a more efficient way.
  * Because I'm tired (need to sleep).
  * And because it's one more example that Python is HORRIBLY SLOW.
- * The below C code takes minutes to run for the part 2. But after all, why not.
+ * The below C code takes minutes to run for the part 2 (would have taken hours in Python). But after all, why not.
  */
 
 /* cc puzzle_5_2.c && ./a.out */
