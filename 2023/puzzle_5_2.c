@@ -65,6 +65,7 @@ int main (int argc, char **argv)
             lowest_location = min(lowest_location, location);
         }
     }
+
     printf("lowest location: %lli\n", lowest_location);
     return 0;
 }
