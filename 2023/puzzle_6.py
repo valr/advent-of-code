@@ -13,8 +13,10 @@ distance = [int(i) for i in lines[1].split()[1:]]
 
 num_record = 1
 for race_ix in range(len(time)):
-    travel = []
+    record = 0
     for time_ix in range(time[race_ix] + 1):
-        travel.append(time_ix * (time[race_ix] - time_ix))
-    num_record *= len([i for i in travel if i > distance[race_ix]])
+        travel = time_ix * (time[race_ix] - time_ix)
+        if travel > distance[race_ix]:
+            record += 1
+    num_record *= record
 print(f"number of ways you can beat the record: {num_record}")
