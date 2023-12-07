@@ -8,6 +8,14 @@ def is_card_higher(card1, card2):
     return strength.index(card1) - strength.index(card2)
 
 
+def is_card_count_higher(card1, card2):
+    return (
+        is_card_higher(card1[0], card2[0])
+        if card1[1] == card2[1]
+        else card1[1] - card2[1]
+    )
+
+
 def is_hand_higher(hand1, hand2):
     type1, type2 = get_type(hand1), get_type(hand2)
     if type1 == type2:
@@ -19,37 +27,31 @@ def is_hand_higher(hand1, hand2):
         return type1 - type2
 
 
-def is_count_higher(card1, card2):
-    return (
-        is_card_higher(card1[0], card2[0])
-        if card1[1] == card2[1]
-        else card1[1] - card2[1]
+def get_type(hand):
+    card_count = {card: hand.count(card) for card in hand}
+    card_count = dict(
+        sorted(card_count.items(), key=cmp_to_key(is_card_count_higher), reverse=True)
     )
 
-
-def get_type(hand):
-    count = {card: hand.count(card) for card in hand}
-    count = dict(sorted(count.items(), key=cmp_to_key(is_count_higher), reverse=True))
-
-    if "J" in count:
-        if count["J"] == 5:
-            count["A"] = count.pop("J")
+    if "J" in card_count:
+        if card_count["J"] == 5:
+            card_count["A"] = card_count.pop("J")
         else:
-            c = count.pop("J")
-            count[list(count)[0]] += c
+            c = card_count.pop("J")
+            card_count[list(card_count)[0]] += c
 
-    for c in count:
-        if count[c] == 5:
+    for c in card_count:
+        if card_count[c] == 5:
             return 6
-        elif count[c] == 4:
+        elif card_count[c] == 4:
             return 5
-        elif count[c] == 3 and len(count) == 2:
+        elif card_count[c] == 3 and len(card_count) == 2:
             return 4
-        elif count[c] == 3:
+        elif card_count[c] == 3:
             return 3
-        elif count[c] == 2 and len(count) == 3:
+        elif card_count[c] == 2 and len(card_count) == 3:
             return 2
-        elif count[c] == 2:
+        elif card_count[c] == 2:
             return 1
         else:
             return 0

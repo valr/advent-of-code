@@ -20,21 +20,21 @@ def is_hand_higher(hand1, hand2):
 
 
 def get_type(hand):
-    count = {card: hand.count(card) for card in hand}
-    count = dict(sorted(count.items(), key=lambda c: c[1], reverse=True))
+    card_count = {card: hand.count(card) for card in hand}
+    card_count = dict(sorted(card_count.items(), key=lambda c: c[1], reverse=True))
 
-    for c in count:
-        if count[c] == 5:
+    for c in card_count:
+        if card_count[c] == 5:
             return 6
-        elif count[c] == 4:
+        elif card_count[c] == 4:
             return 5
-        elif count[c] == 3 and len(count) == 2:
+        elif card_count[c] == 3 and len(card_count) == 2:
             return 4
-        elif count[c] == 3:
+        elif card_count[c] == 3:
             return 3
-        elif count[c] == 2 and len(count) == 3:
+        elif card_count[c] == 2 and len(card_count) == 3:
             return 2
-        elif count[c] == 2:
+        elif card_count[c] == 2:
             return 1
         else:
             return 0
