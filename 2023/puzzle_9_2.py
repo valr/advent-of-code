@@ -4,6 +4,7 @@ with open("puzzle_9.txt") as file:
     hists = [list(map(int, line.split())) for line in file.read().splitlines()]
 
 sum_extrapolation = 0
+
 for hist in hists:
     diffs = [hist]
     while any(diffs[-1]):
