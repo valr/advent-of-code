@@ -3,7 +3,8 @@
 with open("puzzle_9.txt") as file:
     hists = [list(map(int, line.split())) for line in file.read().splitlines()]
 
-sum_extrapolation = 0
+sum_extrapolation1 = 0
+sum_extrapolation2 = 0
 
 for hist in hists:
     diffs = [hist]
@@ -15,9 +16,14 @@ for hist in hists:
             ]
         )
 
+    # part 1
+    sum_extrapolation1 += sum([diff[-1] for diff in diffs])
+
+    # part 2
     extrapolation = 0
     for diff_ix in range(len(diffs) - 1, -1, -1):
         extrapolation = diffs[diff_ix][0] - extrapolation
-    sum_extrapolation += extrapolation
+    sum_extrapolation2 += extrapolation
 
-print(f"sum of extrapolated values: {sum_extrapolation}")
+print(f"sum of extrapolated values - part 1: {sum_extrapolation1}")
+print(f"sum of extrapolated values - part 2: {sum_extrapolation2}")
