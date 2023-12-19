@@ -5,4 +5,8 @@
 #    pip-compile requirements.in
 #
 numpy==1.26.2
+    # via
+    #   -r requirements.in
+    #   scipy
+scipy==1.11.4
     # via -r requirements.in
