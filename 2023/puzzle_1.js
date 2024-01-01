@@ -17,24 +17,21 @@ const numbers = [
 let sum_part2 = 0;
 
 data.split("\n").forEach((line) => {
-  let num_ix1 = -1;
-  let num_ix2 = -1;
-
-  for (let line_ix = 0; line_ix < line.length; line_ix++) {
-    // for (const [num_ix, num] of numbers.entries()) { // slower
-    for (let num_ix = 0, num; (num = numbers[num_ix]); num_ix++) { // faster
-      if (line.slice(line_ix, line_ix + num.length) === num) {
-        if (num_ix1 === -1) {
-          num_ix1 = num_ix;
-        }
-        num_ix2 = num_ix;
-      }
+  const nums = numbers.map((num) => {
+    return [line.indexOf(num), line.lastIndexOf(num)];
+  }).reduce((res, num, num_ix) => {
+    if (num[0] >= 0 && num[0] < res.min_val) {
+      res.min_val = num[0];
+      res.min_ix = num_ix;
     }
-  }
+    if (num[1] >= 0 && num[1] > res.max_val) {
+      res.max_val = num[1];
+      res.max_ix = num_ix;
+    }
+    return res;
+  }, { min_val: Infinity, min_ix: -1, max_val: -Infinity, max_ix: -1 });
 
-  if (num_ix1 >= 0 && num_ix2 >= 0) {
-    sum_part2 += ((num_ix1 % 9 + 1) * 10) + (num_ix2 % 9 + 1);
-  }
+  sum_part2 += ((nums.min_ix % 9 + 1) * 10) + (nums.max_ix % 9 + 1);
 });
 
 console.log(`sum of all of the calibration values: ${sum_part2}`);
