@@ -9,10 +9,9 @@ const sum_part1 = data.split("\n").reduce((sum, line) => {
 console.log(`sum of all of the calibration values: ${sum_part1}`);
 
 // deno-fmt-ignore
-const numbers = [
-  "1","2", "3", "4", "5", "6", "7", "8", "9",
-  "one", "two", "three", "four", "five", "six", "seven", "eight", "nine",
-];
+const numbers =
+  [ "1", "2", "3", "4", "5", "6", "7", "8", "9",
+    "one", "two", "three", "four", "five", "six", "seven", "eight", "nine" ];
 
 let sum_part2 = 0;
 
