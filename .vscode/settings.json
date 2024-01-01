@@ -1,1 +1,6 @@
-{}
+{
+    "deno.enable": true,
+    "deno.lint": true,
+    "[javascript]": { "editor.defaultFormatter": "denoland.vscode-deno" },
+    "[typescript]": { "editor.defaultFormatter": "denoland.vscode-deno" }
+}
