@@ -1,0 +1,11 @@
+{
+    "imports": {
+        // "$std/": "https://deno.land/std@0.210.0/"
+    },
+    "fmt": {
+        // "lineWidth": 88
+    },
+    "tasks": {
+        "day1": "deno run --allow-read puzzle_1.js"
+    }
+}
