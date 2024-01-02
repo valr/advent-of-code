@@ -22,15 +22,13 @@ data.split("\n").forEach((line) => {
       return [line.indexOf(num), line.lastIndexOf(num), numbers[num]];
     })
     .reduce((res, num) => {
-      if (num[0] >= 0 && num[0] < res.min_ix) {
-        res.min_ix = num[0];
-        res.min_val = num[2];
-        // res = { ...res, min_ix: num[0], min_val: num[2] };
+      const [num_min_ix, num_max_ix, num_val] = num;
+
+      if (num_min_ix >= 0 && num_min_ix < res.min_ix) {
+        res = { ...res, min_ix: num_min_ix, min_val: num_val };
       }
-      if (num[1] >= 0 && num[1] > res.max_ix) {
-        res.max_ix = num[1];
-        res.max_val = num[2];
-        // res = { ...res, max_ix: num[1], max_val: num[2] };
+      if (num_max_ix >= 0 && num_max_ix > res.max_ix) {
+        res = { ...res, max_ix: num_max_ix, max_val: num_val };
       }
       return res;
     }, { min_ix: Infinity, min_val: 0, max_ix: -Infinity, max_val: 0 });
