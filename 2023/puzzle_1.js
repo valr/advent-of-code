@@ -25,10 +25,12 @@ data.split("\n").forEach((line) => {
       if (num[0] >= 0 && num[0] < res.min_ix) {
         res.min_ix = num[0];
         res.min_val = num[2];
+        // res = { ...res, min_ix: num[0], min_val: num[2] };
       }
       if (num[1] >= 0 && num[1] > res.max_ix) {
         res.max_ix = num[1];
         res.max_val = num[2];
+        // res = { ...res, max_ix: num[1], max_val: num[2] };
       }
       return res;
     }, { min_ix: Infinity, min_val: 0, max_ix: -Infinity, max_val: 0 });
