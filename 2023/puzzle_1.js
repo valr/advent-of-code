@@ -30,6 +30,7 @@ data.split("\n").forEach((line) => {
       if (num_max_ix >= 0 && num_max_ix > res.max_ix) {
         res = { ...res, max_ix: num_max_ix, max_val: num_val };
       }
+
       return res;
     }, { min_ix: Infinity, min_val: 0, max_ix: -Infinity, max_val: 0 });
 
