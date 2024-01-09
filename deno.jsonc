@@ -3,9 +3,9 @@
         // "$std/": "https://deno.land/std@0.210.0/"
     },
     "fmt": {
-        // "lineWidth": 88
+        // "lineWidth": 80
     },
     "tasks": {
-        "day1": "deno run --allow-read puzzle_1.js"
+        "day1": "cd $INIT_CWD && deno run --allow-read puzzle_1.js"
     }
 }
