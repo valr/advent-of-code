@@ -6,6 +6,6 @@
         // "lineWidth": 80
     },
     "tasks": {
-        "day1": "cd $INIT_CWD && deno run --allow-read puzzle_1.js"
+        "day2": "cd $INIT_CWD && deno run --allow-read puzzle_2.js"
     }
 }
