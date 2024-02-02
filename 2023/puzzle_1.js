@@ -1,5 +1,3 @@
-// parsing
-
 const data = (await Deno.readTextFile("puzzle_1.txt")).split("\n");
 
 // part one
