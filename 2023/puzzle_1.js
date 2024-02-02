@@ -1,22 +1,25 @@
-const data = await Deno.readTextFile("puzzle_1.txt");
+// parsing
 
-const sum_part1 = data.split("\n").reduce((sum, line) => {
-  const regexp = /\d/g;
-  const digits = [...line.matchAll(regexp)];
+const data = (await Deno.readTextFile("puzzle_1.txt")).split("\n");
+
+// part one
+
+const sum_calibration_values = data.reduce((sum, line) => {
+  const digits = [...line.matchAll(/\d/g)];
   return sum + (digits.length ? +(digits.at(0) + digits.at(-1)) : 0);
 }, 0);
 
-console.log(`sum of all of the calibration values: ${sum_part1}`);
+console.log(`sum of all of the calibration values: ${sum_calibration_values}`);
 
-// deno-fmt-ignore
-const numbers =
-  { "1": 1, "2": 2, "3": 3, "4": 4, "5": 5, "6": 6, "7": 7, "8": 8, "9": 9,
-    "one": 1, "two": 2, "three": 3, "four": 4, "five": 5,
-    "six": 6, "seven": 7, "eight": 8, "nine": 9 };
+// part two
 
-let sum_part2 = 0;
+const sum_calibration_values2 = data.reduce((sum, line) => {
+  // deno-fmt-ignore
+  const numbers =
+      { "1": 1, "2": 2, "3": 3, "4": 4, "5": 5, "6": 6, "7": 7, "8": 8, "9": 9,
+        "one": 1, "two": 2, "three": 3, "four": 4, "five": 5,
+        "six": 6, "seven": 7, "eight": 8, "nine": 9 };
 
-data.split("\n").forEach((line) => {
   const number = Object.keys(numbers)
     .map((num) => {
       return [line.indexOf(num), line.lastIndexOf(num), numbers[num]];
@@ -34,7 +37,7 @@ data.split("\n").forEach((line) => {
       return res;
     }, { min_ix: Infinity, min_val: 0, max_ix: -Infinity, max_val: 0 });
 
-  sum_part2 += number.min_val * 10 + number.max_val;
-});
+  return sum + number.min_val * 10 + number.max_val;
+}, 0);
 
-console.log(`sum of all of the calibration values: ${sum_part2}`);
+console.log(`sum of all of the calibration values: ${sum_calibration_values2}`);
