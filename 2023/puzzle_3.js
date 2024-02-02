@@ -1,10 +1,8 @@
-// parsing
-
-const array = (await Deno.readTextFile("puzzle_3.txt")).split("\n");
+const data = (await Deno.readTextFile("puzzle_3.txt")).split("\n");
 
 // part one
 
-const sum_adjacent_symbol = array.reduce((sum, row, row_ix, arr) => {
+const sum_adjacent_symbol = data.reduce((sum, row, row_ix, arr) => {
   return sum + row
     .matchAll(/\d+/g)
     .filter((match) => {
