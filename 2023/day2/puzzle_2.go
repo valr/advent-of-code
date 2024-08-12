@@ -1,6 +1,6 @@
 package main
 
-// go run 2023/day2/puzzle_2.go -file ./2023/day2/input.txt
+// go run 2023/day2/puzzle_2.go -file 2023/day2/input.txt
 
 import (
 	"flag"
