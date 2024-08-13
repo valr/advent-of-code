@@ -48,14 +48,14 @@ func MapSum[K comparable, V Number](m map[K]V) V {
 // Compute the product of all values in the map and return the product
 func MapProduct[K comparable, V Number](m map[K]V) V {
 	var product V
-	var idx int
+	var init bool
 	for _, value := range m {
-		if idx == 0 {
+		if !init {
+			init = true
 			product = value
 		} else {
 			product *= value
 		}
-		idx++
 	}
 	return product
 }
