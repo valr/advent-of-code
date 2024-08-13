@@ -58,12 +58,12 @@ func solution1and2(lines []string) {
 }
 
 func parseLine(s string) Game {
-	gameStr := util.StrSplitAny(strings.TrimPrefix(s, "Game "), ":;")
+	gameStr := util.StrTrimSpaceAll(util.StrSplitAny(strings.TrimPrefix(s, "Game"), ":;"))
 	game := Game{util.StrToInt(gameStr[0]), make([]map[string]int, 0)}
 
 	for _, setStr := range gameStr[1:] {
 		set := make(map[string]int, 3)
-		for _, cubeStr := range util.StrSplitAny(setStr, ",") {
+		for _, cubeStr := range util.StrTrimSpaceAll(util.StrSplitAny(setStr, ",")) {
 			cubeFld := strings.Fields(cubeStr)
 			set[cubeFld[1]] = util.StrToInt(cubeFld[0])
 		}

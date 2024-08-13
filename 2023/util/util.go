@@ -12,11 +12,11 @@ type Number interface {
 		int | float32 | float64
 }
 
-// Split the string into substrings separated by seps and return the slice of trimmed substrings
+// Split the string into substrings separated by seps and return the slice of substrings
 func StrSplitAny(s string, seps string) []string {
-	return StrTrimSpaceAll(strings.FieldsFunc(s, func(r rune) bool {
+	return strings.FieldsFunc(s, func(r rune) bool {
 		return strings.ContainsRune(seps, r)
-	}))
+	})
 }
 
 // Trim all strings in the slice of strings and return the slice
