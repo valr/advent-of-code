@@ -50,7 +50,7 @@ func solution1and2(lines []string) {
 		if gameOk {
 			sum1 += game.id
 		}
-		sum2 += util.Product(setOk)
+		sum2 += util.MapProduct(setOk)
 	}
 
 	fmt.Println("solution 1:", sum1)
@@ -58,14 +58,14 @@ func solution1and2(lines []string) {
 }
 
 func parseLine(s string) Game {
-	gameStr := util.StringsSplitAny(strings.TrimPrefix(s, "Game "), ":;")
-	game := Game{util.ToInt(gameStr[0]), make([]map[string]int, 0)}
+	gameStr := util.StrSplitAny(strings.TrimPrefix(s, "Game "), ":;")
+	game := Game{util.StrToInt(gameStr[0]), make([]map[string]int, 0)}
 
 	for _, setStr := range gameStr[1:] {
 		set := make(map[string]int, 3)
-		for _, cubeStr := range util.StringsSplitAny(setStr, ",") {
+		for _, cubeStr := range util.StrSplitAny(setStr, ",") {
 			cubeFld := strings.Fields(cubeStr)
-			set[cubeFld[1]] = util.ToInt(cubeFld[0])
+			set[cubeFld[1]] = util.StrToInt(cubeFld[0])
 		}
 		game.set = append(game.set, set)
 	}
