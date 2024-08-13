@@ -31,7 +31,7 @@ func StrTrimSpaceAll(s []string) []string {
 func StrToInt(s string) int {
 	num, err := strconv.Atoi(s)
 	if err != nil {
-		log.Panicf("error when converting %v in ToInt: %v", s, err)
+		log.Panicf("error when converting %v in StrToInt: %v", s, err)
 	}
 	return num
 }
