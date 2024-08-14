@@ -2,6 +2,8 @@ package util
 
 import (
 	"log"
+	"maps"
+	"slices"
 	"strconv"
 	"strings"
 )
@@ -37,8 +39,7 @@ func StrToInt(s string) int {
 }
 
 // Compute the sum of all values in the map and return the sum
-func MapSum[K comparable, V Number](m map[K]V) V {
-	var sum V
+func MapSum[K comparable, V Number](m map[K]V) (sum V) {
 	for _, value := range m {
 		sum += value
 	}
@@ -46,14 +47,11 @@ func MapSum[K comparable, V Number](m map[K]V) V {
 }
 
 // Compute the product of all values in the map and return the product
-func MapProduct[K comparable, V Number](m map[K]V) V {
-	var product V
-	var init bool
-	for _, value := range m {
-		if !init {
-			init = true
-			product = value
-		} else {
+func MapProduct[K comparable, V Number](m map[K]V) (product V) {
+	v := slices.Collect(maps.Values(m))
+	if len(v) > 0 {
+		product = v[0]
+		for _, value := range v[1:] {
 			product *= value
 		}
 	}
