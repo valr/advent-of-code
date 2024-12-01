@@ -24,9 +24,9 @@ func solution1and2(lines []string) {
 	var l1, l2 []int
 
 	for _, line := range lines {
-		num := strings.Fields(line)
-		l1 = append(l1, util.StrToInt(num[0]))
-		l2 = append(l2, util.StrToInt(num[1]))
+		v := strings.Fields(line)
+		l1 = append(l1, util.StrToInt(v[0]))
+		l2 = append(l2, util.StrToInt(v[1]))
 	}
 
 	slices.Sort(l1)
