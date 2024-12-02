@@ -16,48 +16,48 @@ var input string
 
 func main() {
 	lines := strings.Split(input, "\n")
-	solution1(lines)
-	solution2(lines)
+	fmt.Println("solution 1:", solution1(lines))
+	fmt.Println("solution 2:", solution2(lines))
 }
 
-func solution1(lines []string) {
+func solution1(lines []string) int {
 	var safe int
 	for _, line := range lines {
 		var l []int
 		for _, f := range strings.Fields(line) {
 			l = append(l, util.StrToInt(f))
 		}
-		if is_report_safe(l) {
+		if is_safe(l) {
 			safe++
 		}
 	}
-	fmt.Println("solution 1:", safe)
+	return safe
 }
 
-func solution2(lines []string) {
+func solution2(lines []string) int {
 	var safe int
-report:
+next:
 	for _, line := range lines {
 		var l []int
 		for _, f := range strings.Fields(line) {
 			l = append(l, util.StrToInt(f))
 		}
-		if is_report_safe(l) {
+		if is_safe(l) {
 			safe++
-			continue report
+			continue next
 		}
 		for i := range len(l) {
 			ll := slices.Concat(l[:i], l[i+1:])
-			if is_report_safe(ll) {
+			if is_safe(ll) {
 				safe++
-				continue report
+				continue next
 			}
 		}
 	}
-	fmt.Println("solution 2:", safe)
+	return safe
 }
 
-func is_report_safe(l []int) bool {
+func is_safe(l []int) bool {
 	var incr bool
 	for i := range len(l) - 1 {
 		if i == 0 {
