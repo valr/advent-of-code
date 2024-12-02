@@ -69,14 +69,10 @@ func is_report_safe(l []int) bool {
 				return false
 			}
 		}
-		if incr && l[i] > l[i+1] {
-			return false
-		}
-		if !incr && l[i] < l[i+1] {
-			return false
-		}
 		abs := util.MathAbs(l[i] - l[i+1])
-		if abs < 1 || abs > 3 {
+		if incr && l[i] > l[i+1] ||
+			!incr && l[i] < l[i+1] ||
+			abs < 1 || abs > 3 {
 			return false
 		}
 	}
