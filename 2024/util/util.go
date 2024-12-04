@@ -32,6 +32,51 @@ func SlicesCount[S ~[]E, E comparable](s S, e E) (count int) {
 	return count
 }
 
+// Return the reversed string
+func StrReverse(s string) string {
+	ss := []rune(s)
+	for i, j := 0, len(ss)-1; i < j; i, j = i+1, j-1 {
+		ss[i], ss[j] = ss[j], ss[i]
+	}
+	return string(ss)
+}
+
+// Return the rotated string matrix
+func StrRotateMatrix(s []string) []string {
+	var m []string
+	for i := range len(s[0]) {
+		var r []rune
+		for j := range len(s) {
+			r = append(r, []rune(s[j])[i])
+		}
+		m = append(m, string(r))
+	}
+	return m
+}
+
+// Return the string matrix read diagonally
+func StrDiagonalMatrix(s []string) []string {
+	var m []string
+	i, j := len(s), len(s[0])
+	for k := range i + j - 1 {
+		var r []rune
+		for l := max(0, k-j+1); l < min(i, k+1); l++ {
+			r = append([]rune{[]rune(s[l])[k-l]}, r...)
+		}
+		m = append(m, string(r))
+	}
+	return m
+}
+
+// Return the string matrix read counter diagonally
+func StrCounterDiagonalMatrix(s []string) []string {
+	var m []string
+	for i := range s {
+		m = append(m, StrReverse(s[i]))
+	}
+	return StrDiagonalMatrix(m)
+}
+
 // Split the string into substrings separated by seps and return the slice of substrings
 func StrSplitAny(s string, seps string) []string {
 	return strings.FieldsFunc(s, func(r rune) bool {
@@ -39,7 +84,7 @@ func StrSplitAny(s string, seps string) []string {
 	})
 }
 
-// Trim all strings in the slice of strings and return the slice
+// Trim all strings in the slice in-place and return the slice of strings
 func StrTrimSpaceAll(s []string) []string {
 	for i := range s {
 		s[i] = strings.TrimSpace(s[i])
