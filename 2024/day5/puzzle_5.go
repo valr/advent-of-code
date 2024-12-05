@@ -61,13 +61,13 @@ func solution2(s1, s2 []string) (result int) {
 			return util.StrToInt(x)
 		})
 		ordered := false
-		for i := 1; i < len(page); i++ {
+		for i := 0; i < len(page); i++ {
 			intersect := lo.Intersect(page[:i], rule[page[i]])
 			if len(intersect) > 0 {
 				ordered = true
 				x1, x2 := slices.Index(page, page[i]), slices.Index(page, intersect[0])
 				page[x1], page[x2] = page[x2], page[x1]
-				i = 0 // restart loop at 1
+				i = -1 // restart loop at 0
 			}
 		}
 		if ordered {
