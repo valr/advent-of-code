@@ -31,11 +31,7 @@ func solution1(s1, s2 []string) (result int) {
 		order := lo.Map(strings.Split(s, "|"), func(x string, i int) int {
 			return util.StrToInt(x)
 		})
-		if o, ok := rule[order[0]]; ok {
-			rule[order[0]] = append(o, order[1])
-		} else {
-			rule[order[0]] = []int{order[1]}
-		}
+		rule[order[0]] = append(rule[order[0]], order[1])
 	}
 next:
 	for _, s := range s2 {
@@ -58,11 +54,7 @@ func solution2(s1, s2 []string) (result int) {
 		order := lo.Map(strings.Split(s, "|"), func(x string, i int) int {
 			return util.StrToInt(x)
 		})
-		if o, ok := rule[order[0]]; ok {
-			rule[order[0]] = append(o, order[1])
-		} else {
-			rule[order[0]] = []int{order[1]}
-		}
+		rule[order[0]] = append(rule[order[0]], order[1])
 	}
 	for _, s := range s2 {
 		page := lo.Map(strings.Split(s, ","), func(x string, i int) int {
