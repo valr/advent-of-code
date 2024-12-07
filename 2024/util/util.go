@@ -14,6 +14,11 @@ type Number interface {
 		int | float32 | float64
 }
 
+// Convert the int to string and return the value
+func IntToStr(i int) string {
+	return strconv.Itoa(i)
+}
+
 // Compute the absolute value of a number
 func MathAbs[V Number](v V) V {
 	if v < 0 {
@@ -119,4 +124,8 @@ func MapProduct[K comparable, V Number](m map[K]V) (product V) {
 		}
 	}
 	return product
+}
+
+func Wrap(v ...any) []any {
+	return v
 }
