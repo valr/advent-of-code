@@ -27,10 +27,10 @@ func solution1and2(lines []string) (res1, res2 int) {
 		num := lo.Map(strings.Fields(s2), func(x string, i int) int {
 			return util.StrToInt(x)
 		})
-		if util.SlicesCount(getResults(num, []int{}, false), val) > 0 {
+		if util.SlicesCount(getResults(num, nil, false), val) > 0 {
 			res1 += val
 		}
-		if util.SlicesCount(getResults(num, []int{}, true), val) > 0 {
+		if util.SlicesCount(getResults(num, nil, true), val) > 0 {
 			res2 += val
 		}
 	}
@@ -46,8 +46,7 @@ func getResults(num []int, res []int, withConcat bool) []int {
 		nres = append(nres, num[0])
 	} else {
 		for _, n := range res {
-			nres = append(nres, n+num[0])
-			nres = append(nres, n*num[0])
+			nres = append(nres, n+num[0], n*num[0])
 			if withConcat {
 				nres = append(nres, util.StrToInt(util.IntToStr(n)+util.IntToStr(num[0])))
 			}
