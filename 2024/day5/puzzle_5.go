@@ -8,7 +8,7 @@ import (
 	"slices"
 	"strings"
 
-	"advent-of-code/2023/util"
+	"advent-of-code/2024/util"
 
 	"github.com/samber/lo"
 )
