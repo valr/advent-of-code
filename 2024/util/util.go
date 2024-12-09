@@ -37,6 +37,20 @@ func SlicesCount[S ~[]E, E comparable](s S, e E) (count int) {
 	return count
 }
 
+// Return the index of the first occurrence of ss in s, or -1 if not present
+func SlicesIndex[S ~[]E, E comparable](s S, ss S) int {
+next:
+	for i := range len(s) - len(ss) + 1 {
+		for j := range len(ss) {
+			if s[i+j] != ss[j] {
+				continue next
+			}
+		}
+		return i
+	}
+	return -1
+}
+
 // Return the reversed string
 func StrReverse(s string) string {
 	ss := []rune(s)
