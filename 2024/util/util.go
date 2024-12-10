@@ -37,6 +37,15 @@ func SlicesCount[S ~[]E, E comparable](s S, e E) (count int) {
 	return count
 }
 
+// Create a slice of size n with all elements initialised with value of given element e
+func SlicesCreate[E any](n int, e E) []E {
+	s := make([]E, n)
+	for i := range s {
+		s[i] = e
+	}
+	return s
+}
+
 // Return the index of the first occurrence of ss in s, or -1 if not present
 func SlicesIndex[S ~[]E, E comparable](s S, ss S) int {
 next:
