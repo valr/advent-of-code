@@ -70,30 +70,27 @@ func solution2(s string) (res int) {
 		}
 	}
 	block2 := slices.Clone(block)
-	for i := len(block) - 1; i >= 0; {
-		// i will contain the end position of the slice of number inside block
-		for i >= 0 && block[i] == -1 {
-			i--
+	for endBlock := len(block) - 1; endBlock >= 0; {
+		// endBlock will contain the end position of the slice of number inside block
+		for endBlock >= 0 && block[endBlock] == -1 {
+			endBlock--
 		}
-		// ii will contain the start position of the slice of number inside block
-		var ii int
-		for ii = i - 1; ii >= 0 && block[ii] == block[i]; ii-- {
+		// startBlock will contain the start position of the slice of number inside block
+		var startBlock int
+		for startBlock = endBlock - 1; startBlock >= 0 && block[startBlock] == block[endBlock]; startBlock-- {
 		}
-		ii++
-		if i >= 0 && ii >= 0 {
-			n := make([]int, i-ii+1)
-			for nn := range n {
-				n[nn] = -1
-			}
-			// j will contain the start position of the slice of -1 inside block2
-			j := util.SlicesIndex(block2, n)
-			if j >= 0 && j < ii {
-				for k, l := j, ii; k < j+len(n); k, l = k+1, l+1 {
-					block2[k], block2[l] = block[l], -1
+		startBlock++
+		if startBlock >= 0 && endBlock >= 0 {
+			sz := endBlock - startBlock + 1
+			// startBlock2 will contain the start position of the slice of -1 inside block2
+			startBlock2 := util.SlicesIndex(block2, util.SlicesCreate(sz, -1))
+			if startBlock2 >= 0 && startBlock2 < startBlock {
+				for i, j := startBlock2, startBlock; i < startBlock2+sz; i, j = i+1, j+1 {
+					block2[i], block2[j] = block[j], block[i]
 				}
 			}
 		}
-		i = ii - 1
+		endBlock = startBlock - 1
 	}
 	lo.ForEach(block2, func(x int, i int) {
 		if x > 0 {
