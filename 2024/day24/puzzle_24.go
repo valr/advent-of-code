@@ -22,7 +22,7 @@ func main() {
 	l1, l2 := strings.Split(input1, "\n"), strings.Split(input2, "\n")
 	m1 := make(map[string]int)
 	for _, l := range l1 {
-		f := util.StrTrimSpaceAll(strings.Split(l, ":"))
+		f := strings.Split(l, ": ")
 		m1[f[0]] = util.StrToInt(f[1])
 	}
 	m2, w2 := make(map[string][]string), make([]string, 0)
@@ -37,8 +37,9 @@ func main() {
 }
 
 func solution1(m1 map[string]int, m2 map[string][]string, w2 []string) (result int64) {
-	slices.Sort(w2)
-	slices.Reverse(w2)
+	slices.SortFunc(w2, func(a, b string) int {
+		return strings.Compare(b, a)
+	})
 	var s string
 	for _, w := range w2 {
 		s += util.IntToStr(computeWire(m1, m2, w))
@@ -48,8 +49,7 @@ func solution1(m1 map[string]int, m2 map[string][]string, w2 []string) (result i
 }
 
 func computeWire(m1 map[string]int, m2 map[string][]string, w string) int {
-	v, ok := m1[w]
-	if ok {
+	if v, ok := m1[w]; ok {
 		return v
 	}
 	o1, op, o2 := computeWire(m1, m2, m2[w][0]), m2[w][1], computeWire(m1, m2, m2[w][2])
