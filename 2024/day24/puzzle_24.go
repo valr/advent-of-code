@@ -52,20 +52,10 @@ func computeWire(m1 map[string]int, m2 map[string][]string, w string) int {
 	if v, ok := m1[w]; ok {
 		return v
 	}
+	opcode := map[string][]int{"XOR": {1}, "OR": {1, 2}, "AND": {2}}
 	o1, op, o2 := computeWire(m1, m2, m2[w][0]), m2[w][1], computeWire(m1, m2, m2[w][2])
-	switch op {
-	case "AND":
-		if o1+o2 > 1 {
-			return 1
-		}
-	case "OR":
-		if o1+o2 >= 1 {
-			return 1
-		}
-	case "XOR":
-		if o1+o2 == 1 {
-			return 1
-		}
+	if slices.Contains(opcode[op], o1+o2) {
+		return 1
 	}
 	return 0
 }
