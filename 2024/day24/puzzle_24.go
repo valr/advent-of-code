@@ -6,7 +6,6 @@ import (
 	_ "embed"
 	"fmt"
 	"slices"
-	"strconv"
 	"strings"
 
 	"advent-of-code/2024/util"
@@ -36,15 +35,11 @@ func main() {
 	fmt.Println("solution 1:", solution1(m1, m2, w2))
 }
 
-func solution1(m1 map[string]int, m2 map[string][]string, w2 []string) (result int64) {
-	slices.SortFunc(w2, func(a, b string) int {
-		return strings.Compare(b, a)
-	})
-	var s string
-	for _, w := range w2 {
-		s += util.IntToStr(computeWire(m1, m2, w))
+func solution1(m1 map[string]int, m2 map[string][]string, w2 []string) (result int) {
+	slices.Sort(w2)
+	for i, v := range w2 {
+		result += computeWire(m1, m2, v) << i
 	}
-	result, _ = strconv.ParseInt(s, 2, 64)
 	return result
 }
 
