@@ -52,6 +52,7 @@ func computeWire(m1 map[string]int, m2 map[string][]string, w string) int {
 	o1, op, o2 := computeWire(m1, m2, m2[w][0]), m2[w][1], computeWire(m1, m2, m2[w][2])
 	if slices.Contains(opcode[op], o1+o2) {
 		return 1
+	} else {
+		return 0
 	}
-	return 0
 }
