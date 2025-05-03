@@ -1,4 +1,4 @@
-# Solutions to Advent of Code:  
+# Solutions to Advent of Code:
 ### <https://adventofcode.com/>
 
 ## Used languages:
