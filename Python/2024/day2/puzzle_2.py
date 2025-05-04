@@ -1,7 +1,7 @@
 from operator import sub
 
 
-def is_safe(diffs):
+def is_safe(diffs: list[int]) -> bool:
     return all(1 <= x <= 3 for x in diffs) or all(-3 <= x <= -1 for x in diffs)
 
 
