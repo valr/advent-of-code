@@ -5,5 +5,6 @@
 - Bash
 - C
 - Go
+- Java
 - JavaScript
 - Python
