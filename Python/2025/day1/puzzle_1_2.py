@@ -1,7 +1,5 @@
 #!/usr/bin/env python3
 
-count = 0
-
 
 def count_cross_zero(count, position, direction, step):
     for _ in range(step):
@@ -10,6 +8,8 @@ def count_cross_zero(count, position, direction, step):
             count += 1
     return count, position
 
+
+count = 0
 
 with open("input.txt") as f:
     position = 50
