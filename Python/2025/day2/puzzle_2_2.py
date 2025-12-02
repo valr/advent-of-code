@@ -2,7 +2,7 @@
 
 
 # # original version (poor performance)
-# def is_valid_id(id):
+# def is_valid_id(id: int) -> bool:
 #     s = str(id)
 #     sz = len(s)
 #     for n in range(1, sz // 2 + 1):
