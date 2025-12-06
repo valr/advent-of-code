@@ -19,7 +19,7 @@ def is_valid_id(id: int) -> bool:
     if sz < 2:
         return False
     i = (s + s).find(s, 1)
-    return i > 0 and i < sz
+    return i < sz
 
 
 sum = 0
