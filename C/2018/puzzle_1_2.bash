@@ -9,11 +9,11 @@ array[$result]="present"
 
 while true; do
   while read line; do
-    result=$(( result + line ))
+    result=$((result + line))
     if [ "${array[$result]}" = "present" ]; then
-      echo $(( result - 1000000 ))
+      echo $((result - 1000000))
       exit 0
     fi
     array[$result]="present"
-  done < "puzzle1b.txt"
+  done <"puzzle1b.txt"
 done

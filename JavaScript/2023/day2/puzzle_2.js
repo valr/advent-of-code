@@ -18,12 +18,12 @@ const games = data.split("\n").map((line) => {
 
 const sum_game_ids = games.reduce((sum, game) => {
   return game.slice(1).every((set) => {
-      return (
-        (set.red === undefined || set.red <= 12) &&
-        (set.green === undefined || set.green <= 13) &&
-        (set.blue === undefined || set.blue <= 14)
-      );
-    })
+    return (
+      (set.red === undefined || set.red <= 12) &&
+      (set.green === undefined || set.green <= 13) &&
+      (set.blue === undefined || set.blue <= 14)
+    );
+  })
     ? sum + game[0]
     : sum;
 }, 0);
