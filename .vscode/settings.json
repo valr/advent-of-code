@@ -2,11 +2,18 @@
     // Javascript/TypeScript settings
     "deno.enable": true,
     "deno.lint": true,
-    "[javascript]": { "editor.defaultFormatter": "denoland.vscode-deno" },
-    "[typescript]": { "editor.defaultFormatter": "denoland.vscode-deno" },
+    "[javascript]": {
+        "editor.defaultFormatter": "denoland.vscode-deno"
+    },
+    "[typescript]": {
+        "editor.defaultFormatter": "denoland.vscode-deno"
+    },
     // Python settings
     "black-formatter.cwd": "${workspaceFolder}/Python",
-    "black-formatter.args": ["--line-length", "120"],
+    "black-formatter.args": [
+        "--line-length",
+        "120"
+    ],
     "flake8.cwd": "${workspaceFolder}/Python",
     "mypy-type-checker.cwd": "${workspaceFolder}/Python",
     "mypy-type-checker.importStrategy": "fromEnvironment",
