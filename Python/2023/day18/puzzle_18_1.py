@@ -25,10 +25,10 @@ for line in lines:
             posy -= 1
 
         if posy < 0 or posx < 0:
-            raise ("can't handle negative values")
+            raise ValueError("can't handle negative values")
 
         grid[posy, posx] = 1
-        length -= 1
+        length -= 1  # type: ignore
 
 filled_grid = sp.ndimage.binary_fill_holes(grid).astype(int)
 print(np.unique(filled_grid, return_counts=True))  # use count of 1
