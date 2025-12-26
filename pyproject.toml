@@ -1,6 +1,7 @@
 [tool.pyright]
 include = ["Python"]
 exclude = ["Python/.venv", "**/__pycache__"]
+
 venvPath = "Python"
 venv = ".venv"
 
@@ -12,7 +13,7 @@ reportUnusedVariable = "none"
 
 [tool.ruff]
 extend-exclude = [".venv", "__pycache__"]
-line-length = 88
+line-length = 120
 
 [tool.ruff.lint]
 extend-select = ["I", "B", "UP"]
