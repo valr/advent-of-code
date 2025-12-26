@@ -11,7 +11,7 @@ reportUnusedFunction = "none"
 reportUnusedVariable = "none"
 
 [tool.ruff]
-exclude = ["Python/.venv", "**/__pycache__"]
+extend-exclude = [".venv", "__pycache__"]
 line-length = 88
 
 [tool.ruff.lint]
