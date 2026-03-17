@@ -24,7 +24,7 @@ func solution1(lines []string) int {
 	var safe int
 	for _, line := range lines {
 		var l []int
-		for _, f := range strings.Fields(line) {
+		for f := range strings.FieldsSeq(line) {
 			l = append(l, util.StrToInt(f))
 		}
 		if is_safe(l) {
@@ -39,7 +39,7 @@ func solution2(lines []string) int {
 next:
 	for _, line := range lines {
 		var l []int
-		for _, f := range strings.Fields(line) {
+		for f := range strings.FieldsSeq(line) {
 			l = append(l, util.StrToInt(f))
 		}
 		if is_safe(l) {
