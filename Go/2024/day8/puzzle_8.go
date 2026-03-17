@@ -7,9 +7,7 @@ import (
 	"fmt"
 	"strings"
 
-	"advent-of-code/2024/util"
-
-	"github.com/samber/lo"
+	"advent-of-code/util"
 )
 
 //go:embed input.txt
@@ -50,7 +48,7 @@ func walkMatrix(arr [][]rune, setAntinodes func(i int, j int, arr [][]rune, res 
 			}
 		}
 	}
-	return lo.Sum(lo.Flatten(res))
+	return util.MathSum(util.SlicesFlatten(res)...)
 }
 
 func setAntinodes1(i int, j int, arr [][]rune, res [][]int) {

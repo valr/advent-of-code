@@ -7,9 +7,7 @@ import (
 	"fmt"
 	"slices"
 
-	"advent-of-code/2024/util"
-
-	"github.com/samber/lo"
+	"advent-of-code/util"
 )
 
 //go:embed input.txt
@@ -20,7 +18,7 @@ func main() {
 	fmt.Println("solution 2:", solution2(input))
 }
 
-func solution1(s string) (res int) {
+func solution1(s string) int {
 	var block []int
 	var num int
 	for i, x := range s {
@@ -46,15 +44,15 @@ func solution1(s string) (res int) {
 			block[i], block[j] = block[j], block[i]
 		}
 	}
-	lo.ForEach(block, func(x int, i int) {
-		if x > 0 {
-			res += i * x
+	return util.SlicesReduce2(block, 0, func(res, v, i int) int {
+		if v > 0 {
+			return res + i*v
 		}
+		return res
 	})
-	return res
 }
 
-func solution2(s string) (res int) {
+func solution2(s string) int {
 	var block []int
 	var num int
 	for i, x := range s {
@@ -92,10 +90,10 @@ func solution2(s string) (res int) {
 		}
 		endBlock = startBlock - 1
 	}
-	lo.ForEach(block2, func(x int, i int) {
-		if x > 0 {
-			res += i * x
+	return util.SlicesReduce2(block2, 0, func(res, v, i int) int {
+		if v > 0 {
+			return res + i*v
 		}
+		return res
 	})
-	return res
 }

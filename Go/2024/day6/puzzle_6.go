@@ -7,7 +7,7 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/samber/lo"
+	"advent-of-code/util"
 )
 
 const (
@@ -99,7 +99,7 @@ func walkMatrix(arr [][]int, y int, x int) int {
 			return 0
 		}
 	}
-	return len(lo.Filter(lo.Flatten(arr), func(x int, i int) bool {
+	return len(util.SlicesFilter(util.SlicesFlatten(arr), func(x int) bool {
 		return x == walked
 	}))
 }

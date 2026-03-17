@@ -6,10 +6,12 @@ import (
 	"flag"
 	"fmt"
 	"log/slog"
+	"maps"
 	"os"
+	"slices"
 	"strings"
 
-	"advent-of-code/2023/util"
+	"advent-of-code/util"
 )
 
 type Game struct {
@@ -50,7 +52,7 @@ func solution1and2(lines []string) {
 		if gameOk {
 			sum1 += game.id
 		}
-		sum2 += util.MapProduct(setOk)
+		sum2 += util.MathProduct(slices.Collect(maps.Values(setOk))...)
 	}
 
 	fmt.Println("solution 1:", sum1)
@@ -58,12 +60,12 @@ func solution1and2(lines []string) {
 }
 
 func parseLine(s string) Game {
-	gameStr := util.StrTrimSpaceAll(util.StrSplitAny(strings.TrimPrefix(s, "Game"), ":;"))
+	gameStr := util.SlicesMap(util.StrSplitAny(strings.TrimPrefix(s, "Game"), ":;"), strings.TrimSpace)
 	game := Game{util.StrToInt(gameStr[0]), make([]map[string]int, 0)}
 
 	for _, setStr := range gameStr[1:] {
 		set := make(map[string]int, 3)
-		for _, cubeStr := range util.StrTrimSpaceAll(util.StrSplitAny(setStr, ",")) {
+		for _, cubeStr := range util.SlicesMap(util.StrSplitAny(setStr, ","), strings.TrimSpace) {
 			cubeFld := strings.Fields(cubeStr)
 			set[cubeFld[1]] = util.StrToInt(cubeFld[0])
 		}

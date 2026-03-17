@@ -7,9 +7,7 @@ import (
 	"fmt"
 	"strings"
 
-	"advent-of-code/2024/util"
-
-	"github.com/samber/lo"
+	"advent-of-code/util"
 )
 
 //go:embed input.txt
@@ -24,7 +22,7 @@ func solution1and2(lines []string) (res1, res2 int) {
 	for _, l := range lines {
 		s1, s2, _ := strings.Cut(l, ":")
 		val := util.StrToInt(s1)
-		num := lo.Map(strings.Fields(s2), func(x string, i int) int {
+		num := util.SlicesMap(strings.Fields(s2), func(x string) int {
 			return util.StrToInt(x)
 		})
 		if util.SlicesCount(getResults(num, nil, false), val) > 0 {
