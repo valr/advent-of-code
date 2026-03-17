@@ -8,7 +8,7 @@ import (
 	"slices"
 	"strings"
 
-	"advent-of-code/2024/util"
+	"advent-of-code/util"
 )
 
 //go:embed input1.txt

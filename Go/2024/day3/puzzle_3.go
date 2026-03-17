@@ -8,7 +8,7 @@ import (
 	"regexp"
 	"strings"
 
-	"advent-of-code/2024/util"
+	"advent-of-code/util"
 )
 
 //go:embed input.txt
