@@ -11,7 +11,10 @@ import (
 	"slices"
 	"strings"
 
-	"advent-of-code/util"
+	"github.com/valr/go-std/mathx"
+	"github.com/valr/go-std/slicesx"
+	"github.com/valr/go-std/strconvx"
+	"github.com/valr/go-std/stringsx"
 )
 
 type Game struct {
@@ -52,7 +55,7 @@ func solution1and2(lines []string) {
 		if gameOk {
 			sum1 += game.id
 		}
-		sum2 += util.MathProduct(slices.Collect(maps.Values(setOk))...)
+		sum2 += mathx.Product(slices.Collect(maps.Values(setOk))...)
 	}
 
 	fmt.Println("solution 1:", sum1)
@@ -60,14 +63,14 @@ func solution1and2(lines []string) {
 }
 
 func parseLine(s string) Game {
-	gameStr := util.SlicesMap(util.StrSplitAny(strings.TrimPrefix(s, "Game"), ":;"), strings.TrimSpace)
-	game := Game{util.StrToInt(gameStr[0]), make([]map[string]int, 0)}
+	gameStr := slicesx.Map(stringsx.SplitAny(strings.TrimPrefix(s, "Game"), ":;"), strings.TrimSpace)
+	game := Game{strconvx.StrToInt(gameStr[0]), make([]map[string]int, 0)}
 
 	for _, setStr := range gameStr[1:] {
 		set := make(map[string]int, 3)
-		for _, cubeStr := range util.SlicesMap(util.StrSplitAny(setStr, ","), strings.TrimSpace) {
+		for _, cubeStr := range slicesx.Map(stringsx.SplitAny(setStr, ","), strings.TrimSpace) {
 			cubeFld := strings.Fields(cubeStr)
-			set[cubeFld[1]] = util.StrToInt(cubeFld[0])
+			set[cubeFld[1]] = strconvx.StrToInt(cubeFld[0])
 		}
 		game.set = append(game.set, set)
 	}

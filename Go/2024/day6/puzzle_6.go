@@ -7,7 +7,7 @@ import (
 	"fmt"
 	"strings"
 
-	"advent-of-code/util"
+	"github.com/valr/go-std/slicesx"
 )
 
 const (
@@ -99,7 +99,7 @@ func walkMatrix(arr [][]int, y int, x int) int {
 			return 0
 		}
 	}
-	return len(util.SlicesFilter(util.SlicesFlatten(arr), func(x int) bool {
+	return len(slicesx.Filter(slicesx.Flatten(arr), func(x int) bool {
 		return x == walked
 	}))
 }

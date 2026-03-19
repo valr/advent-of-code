@@ -7,7 +7,9 @@ import (
 	"fmt"
 	"strings"
 
-	"advent-of-code/util"
+	"github.com/valr/go-std/slicesx"
+	"github.com/valr/go-std/strconvx"
+	"github.com/valr/go-std/util"
 )
 
 //go:embed input.txt
@@ -21,14 +23,14 @@ func main() {
 func solution1and2(lines []string) (res1, res2 int) {
 	for _, l := range lines {
 		s1, s2, _ := strings.Cut(l, ":")
-		val := util.StrToInt(s1)
-		num := util.SlicesMap(strings.Fields(s2), func(x string) int {
-			return util.StrToInt(x)
+		val := strconvx.StrToInt(s1)
+		num := slicesx.Map(strings.Fields(s2), func(x string) int {
+			return strconvx.StrToInt(x)
 		})
-		if util.SlicesCount(getResults(num, nil, false), val) > 0 {
+		if slicesx.Count(getResults(num, nil, false), val) > 0 {
 			res1 += val
 		}
-		if util.SlicesCount(getResults(num, nil, true), val) > 0 {
+		if slicesx.Count(getResults(num, nil, true), val) > 0 {
 			res2 += val
 		}
 	}
@@ -46,7 +48,7 @@ func getResults(num []int, res []int, withConcat bool) []int {
 		for _, n := range res {
 			nres = append(nres, n+num[0], n*num[0])
 			if withConcat {
-				nres = append(nres, util.StrToInt(util.IntToStr(n)+util.IntToStr(num[0])))
+				nres = append(nres, strconvx.StrToInt(strconvx.IntToStr(n)+strconvx.IntToStr(num[0])))
 			}
 		}
 	}

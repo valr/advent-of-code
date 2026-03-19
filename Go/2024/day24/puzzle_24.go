@@ -8,7 +8,7 @@ import (
 	"slices"
 	"strings"
 
-	"advent-of-code/util"
+	"github.com/valr/go-std/strconvx"
 )
 
 //go:embed input1.txt
@@ -24,7 +24,7 @@ func main() {
 	m1 := make(map[string]int)
 	for _, l := range l1 {
 		f := strings.Split(l, ": ")
-		m1[f[0]] = util.StrToInt(f[1])
+		m1[f[0]] = strconvx.StrToInt(f[1])
 	}
 	m2, w2 := make(map[string][]string), make([]string, 0)
 	for _, l := range l2 {

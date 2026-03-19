@@ -8,7 +8,8 @@ import (
 	"slices"
 	"strings"
 
-	"advent-of-code/util"
+	"github.com/valr/go-std/mathx"
+	"github.com/valr/go-std/strconvx"
 )
 
 //go:embed input.txt
@@ -25,7 +26,7 @@ func solution1(lines []string) int {
 	for _, line := range lines {
 		var l []int
 		for f := range strings.FieldsSeq(line) {
-			l = append(l, util.StrToInt(f))
+			l = append(l, strconvx.StrToInt(f))
 		}
 		if is_safe(l) {
 			safe++
@@ -40,7 +41,7 @@ next:
 	for _, line := range lines {
 		var l []int
 		for f := range strings.FieldsSeq(line) {
-			l = append(l, util.StrToInt(f))
+			l = append(l, strconvx.StrToInt(f))
 		}
 		if is_safe(l) {
 			safe++
@@ -69,7 +70,7 @@ func is_safe(l []int) bool {
 				return false
 			}
 		}
-		abs := util.MathAbs(l[i] - l[i+1])
+		abs := mathx.Abs(l[i] - l[i+1])
 		if incr && l[i] > l[i+1] ||
 			!incr && l[i] < l[i+1] ||
 			abs < 1 || abs > 3 {

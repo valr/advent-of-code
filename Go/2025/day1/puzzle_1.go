@@ -1,6 +1,6 @@
 package main
 
-// go run 2024/day1/puzzle_1.go
+// go run 2025/day1/puzzle_1.go
 
 import (
 	_ "embed"

@@ -7,7 +7,8 @@ import (
 	"fmt"
 	"strings"
 
-	"advent-of-code/util"
+	"github.com/valr/go-std/matrix"
+	"github.com/valr/go-std/stringsx"
 )
 
 //go:embed input.txt
@@ -23,27 +24,27 @@ func solution1(lines []string) int {
 	var count int
 
 	// This is definitely not the most efficient solution, but the idea here is
-	// to improve the util package by adding extra functions that may be reused
+	// to improve the go-std package by adding extra functions that may be reused
 	// in future Advent of Code exercices.
 
 	s := strings.Join(lines, " ")
 	count += strings.Count(s, "XMAS")
-	s = util.StrReverse(s)
+	s = stringsx.Reverse(s)
 	count += strings.Count(s, "XMAS")
 
-	s = strings.Join(util.StrRotateMatrix(lines), " ")
+	s = strings.Join(matrix.RotateStrMatrix(lines), " ")
 	count += strings.Count(s, "XMAS")
-	s = util.StrReverse(s)
-	count += strings.Count(s, "XMAS")
-
-	s = strings.Join(util.StrDiagonalMatrix(lines), " ")
-	count += strings.Count(s, "XMAS")
-	s = util.StrReverse(s)
+	s = stringsx.Reverse(s)
 	count += strings.Count(s, "XMAS")
 
-	s = strings.Join(util.StrCounterDiagonalMatrix(lines), " ")
+	s = strings.Join(matrix.DiagonalStrMatrix(lines), " ")
 	count += strings.Count(s, "XMAS")
-	s = util.StrReverse(s)
+	s = stringsx.Reverse(s)
+	count += strings.Count(s, "XMAS")
+
+	s = strings.Join(matrix.CounterDiagonalStrMatrix(lines), " ")
+	count += strings.Count(s, "XMAS")
+	s = stringsx.Reverse(s)
 	count += strings.Count(s, "XMAS")
 
 	return count

@@ -7,7 +7,9 @@ import (
 	"fmt"
 	"strings"
 
-	"advent-of-code/util"
+	"github.com/valr/go-std/mathx"
+	"github.com/valr/go-std/slicesx"
+	"github.com/valr/go-std/util"
 )
 
 //go:embed input.txt
@@ -48,14 +50,14 @@ func walkMatrix(arr [][]rune, setAntinodes func(i int, j int, arr [][]rune, res 
 			}
 		}
 	}
-	return util.MathSum(util.SlicesFlatten(res)...)
+	return mathx.Sum(slicesx.Flatten(res)...)
 }
 
 func setAntinodes1(i int, j int, arr [][]rune, res [][]int) {
 	for y := range arr {
 		for x := range arr[y] {
 			if i != y && j != x && arr[i][j] == arr[y][x] {
-				di, dj := util.MathAbs(i-y), util.MathAbs(j-x)
+				di, dj := mathx.Abs(i-y), mathx.Abs(j-x)
 				ai, aj := i, j
 				if i < y {
 					ai -= di
@@ -79,7 +81,7 @@ func setAntinodes2(i int, j int, arr [][]rune, res [][]int) {
 	for y := range arr {
 		for x := range arr[y] {
 			if i != y && j != x && arr[i][j] == arr[y][x] {
-				di, dj := util.MathAbs(i-y), util.MathAbs(j-x)
+				di, dj := mathx.Abs(i-y), mathx.Abs(j-x)
 				ai, aj := i, j
 				for {
 					if ai < 0 || ai >= len(arr) || aj < 0 || aj >= len(arr[i]) {

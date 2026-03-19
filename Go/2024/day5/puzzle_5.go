@@ -8,7 +8,8 @@ import (
 	"slices"
 	"strings"
 
-	"advent-of-code/util"
+	"github.com/valr/go-std/slicesx"
+	"github.com/valr/go-std/strconvx"
 )
 
 //go:embed input1.txt
@@ -26,18 +27,18 @@ func main() {
 func solution1(s1, s2 []string) (result int) {
 	rule := make(map[int][]int)
 	for _, s := range s1 {
-		order := util.SlicesMap(strings.Split(s, "|"), func(x string) int {
-			return util.StrToInt(x)
+		order := slicesx.Map(strings.Split(s, "|"), func(x string) int {
+			return strconvx.StrToInt(x)
 		})
 		rule[order[0]] = append(rule[order[0]], order[1])
 	}
 next:
 	for _, s := range s2 {
-		page := util.SlicesMap(strings.Split(s, ","), func(x string) int {
-			return util.StrToInt(x)
+		page := slicesx.Map(strings.Split(s, ","), func(x string) int {
+			return strconvx.StrToInt(x)
 		})
 		for i, x := range page {
-			if len(util.SlicesIntersect(page[:i], rule[x])) > 0 {
+			if len(slicesx.Intersect(page[:i], rule[x])) > 0 {
 				continue next
 			}
 		}
@@ -49,18 +50,18 @@ next:
 func solution2(s1, s2 []string) (result int) {
 	rule := make(map[int][]int)
 	for _, s := range s1 {
-		order := util.SlicesMap(strings.Split(s, "|"), func(x string) int {
-			return util.StrToInt(x)
+		order := slicesx.Map(strings.Split(s, "|"), func(x string) int {
+			return strconvx.StrToInt(x)
 		})
 		rule[order[0]] = append(rule[order[0]], order[1])
 	}
 	for _, s := range s2 {
-		page := util.SlicesMap(strings.Split(s, ","), func(x string) int {
-			return util.StrToInt(x)
+		page := slicesx.Map(strings.Split(s, ","), func(x string) int {
+			return strconvx.StrToInt(x)
 		})
 		ordered := false
 		for i := 0; i < len(page); i++ {
-			intersect := util.SlicesIntersect(page[:i], rule[page[i]])
+			intersect := slicesx.Intersect(page[:i], rule[page[i]])
 			if len(intersect) > 0 {
 				ordered = true
 				x1, x2 := slices.Index(page, page[i]), slices.Index(page, intersect[0])

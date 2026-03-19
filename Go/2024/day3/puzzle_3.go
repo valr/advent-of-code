@@ -8,7 +8,7 @@ import (
 	"regexp"
 	"strings"
 
-	"advent-of-code/util"
+	"github.com/valr/go-std/strconvx"
 )
 
 //go:embed input.txt
@@ -24,7 +24,7 @@ func solution1(s string) (result int) {
 	matches := re.FindAllStringSubmatch(s, -1)
 	for _, m := range matches {
 		s1, s2, _ := strings.Cut(m[1], ",")
-		result += util.StrToInt(s1) * util.StrToInt(s2)
+		result += strconvx.StrToInt(s1) * strconvx.StrToInt(s2)
 	}
 	return result
 }
@@ -42,7 +42,7 @@ func solution2(s string) (result int) {
 		default:
 			if mul {
 				s1, s2, _ := strings.Cut(m[1], ",")
-				result += util.StrToInt(s1) * util.StrToInt(s2)
+				result += strconvx.StrToInt(s1) * strconvx.StrToInt(s2)
 			}
 		}
 	}

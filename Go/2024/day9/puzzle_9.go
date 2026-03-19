@@ -7,7 +7,8 @@ import (
 	"fmt"
 	"slices"
 
-	"advent-of-code/util"
+	"github.com/valr/go-std/slicesx"
+	"github.com/valr/go-std/strconvx"
 )
 
 //go:embed input.txt
@@ -23,12 +24,12 @@ func solution1(s string) int {
 	var num int
 	for i, x := range s {
 		if i%2 == 0 {
-			for range util.StrToInt(string(x)) {
+			for range strconvx.StrToInt(string(x)) {
 				block = append(block, num)
 			}
 			num++
 		} else {
-			for range util.StrToInt(string(x)) {
+			for range strconvx.StrToInt(string(x)) {
 				block = append(block, -1)
 			}
 		}
@@ -44,7 +45,7 @@ func solution1(s string) int {
 			block[i], block[j] = block[j], block[i]
 		}
 	}
-	return util.SlicesReduce2(block, 0, func(res, v, i int) int {
+	return slicesx.Reduce2(block, 0, func(res, v, i int) int {
 		if v > 0 {
 			return res + i*v
 		}
@@ -57,12 +58,12 @@ func solution2(s string) int {
 	var num int
 	for i, x := range s {
 		if i%2 == 0 {
-			for range util.StrToInt(string(x)) {
+			for range strconvx.StrToInt(string(x)) {
 				block = append(block, num)
 			}
 			num++
 		} else {
-			for range util.StrToInt(string(x)) {
+			for range strconvx.StrToInt(string(x)) {
 				block = append(block, -1)
 			}
 		}
@@ -81,7 +82,7 @@ func solution2(s string) int {
 		if startBlock >= 0 && endBlock >= 0 {
 			sz := endBlock - startBlock + 1
 			// startBlock2 will contain the start position of the slice of -1 inside block2
-			startBlock2 := util.SlicesIndex(block2, util.SlicesCreate(sz, -1))
+			startBlock2 := slicesx.Index(block2, slicesx.Create(sz, -1))
 			if startBlock2 >= 0 && startBlock2 < startBlock {
 				for i, j := startBlock2, startBlock; i < startBlock2+sz; i, j = i+1, j+1 {
 					block2[i], block2[j] = block[j], block[i]
@@ -90,7 +91,7 @@ func solution2(s string) int {
 		}
 		endBlock = startBlock - 1
 	}
-	return util.SlicesReduce2(block2, 0, func(res, v, i int) int {
+	return slicesx.Reduce2(block2, 0, func(res, v, i int) int {
 		if v > 0 {
 			return res + i*v
 		}
