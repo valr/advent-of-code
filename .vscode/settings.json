@@ -7,16 +7,5 @@
     },
     "[typescript]": {
         "editor.defaultFormatter": "denoland.vscode-deno"
-    },
-    // Python settings
-    "black-formatter.cwd": "${workspaceFolder}/Python",
-    "black-formatter.args": [
-        "--line-length",
-        "120"
-    ],
-    "flake8.cwd": "${workspaceFolder}/Python",
-    "mypy-type-checker.cwd": "${workspaceFolder}/Python",
-    "mypy-type-checker.importStrategy": "fromEnvironment",
-    "python.defaultInterpreterPath": "${workspaceFolder}/Python/.venv",
-    "python.terminal.activateEnvInCurrentTerminal": true
+    }
 }
